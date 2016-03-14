@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<div>book: {{ book.name }}</div>
+{% for author in authors %}
+<div><a href="/author/{{ author.id }}">author: {{ author.name }}</a></div>
+{% endfor %}
+{% endblock %}

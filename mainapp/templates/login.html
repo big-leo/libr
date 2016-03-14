@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Sign in</h1>
+<form action="" method="POST" name="login">
+  {{ form.hidden_tag() }}
+  <p>
+    Please enter our nickname:
+    <br>{{ form.nickname(size=10) }}</br>
+    {% for error in form.errors.nickname %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p><input type="submit" value="Sign in"></p>
+</form>
+{% endblock %}
