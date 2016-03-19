@@ -1,7 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
 <div>book: {{ book.name }}</div>
+<form action="" method="POST" name="edit">
+  {{ form_n.hidden_tag() }}
+  <p>
+    Please enter new name:
+    <br>{{ form_n.name(size=20) }}</br>
+    {% for error in form_n.errors.name %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p><input type="submit" name="edit" value="Edit"></p>
+</form>
 {% for author in authors %}
-<div><a href="/author/{{ author.id }}">author: {{ author.name }}</a></div>
+<div>
+  <a href="/author/{{ author.id }}">author: {{ author.name }}</a>
+  <a href="/del_book_author/{{ book.id }}/{{ author.id }}">Delete</a>
+</div>
 {% endfor %}
+<form action="" method="POST" name="add_author">
+  {{ form_a.hidden_tag() }}
+  <p>
+    Please enter new author:
+    <br>{{ form_a.name(size=20) }}</br>
+    {% for error in form_a.errors.name %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+  </p>
+  <p><input type="submit" name="add_author" value="Add author"></p>
+</form>
 {% endblock %}

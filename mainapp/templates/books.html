@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 {% for book in books %}
-<div><a href="/book/{{ book.id }}">book: {{ book.name }}</a></div>
+<div>
+  <a href="/book/{{ book.id }}">book: {{ book.name }}</a>
+  <a href="/del_book/{{ book.id }}">Delete</a>
+</div>
 {% endfor %}
-<form action="" method="POST" name="book">
+<form action="" method="POST" name="add">
   {{ form.hidden_tag() }}
   <p>
     Please enter new book:
     <br>{{ form.name(size=20) }}</br>
-    {% for error in form.errors.search %}
+    {% for error in form.errors.name %}
     <span style="color: red;">[{{ error }}]</span>
     {% endfor %}
   </p>
